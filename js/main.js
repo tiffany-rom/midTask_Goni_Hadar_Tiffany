@@ -6,7 +6,8 @@
             "family": "תותיים",
             "origin" : "הודו והאזורים הטרופיים של דרום מזרח אסיה",
             "text" : "פיקוס בנגלי הוא עץ ירוק-עד גדול וחזק ובעל עמידות במחלות ובמזיקים. העץ מצמיח שורשי אוויר רבים, בעיקר כאשר הוא גדל באזורים לחים, ואלה מתעבים לגזעים המשתרשים בקרקע ובתוך כך תומכים בהתפשטות העץ על שטח רחב במיוחד.",
-            "link" : "https://he.wikipedia.org/wiki/%D7%A4%D7%99%D7%A7%D7%95%D7%A1_%D7%91%D7%A0%D7%92%D7%9C%D7%99"
+            "link" : "https://he.wikipedia.org/wiki/%D7%A4%D7%99%D7%A7%D7%95%D7%A1_%D7%91%D7%A0%D7%92%D7%9C%D7%99",
+            "img" : ""
         },
         {
             "id": 2,
@@ -49,12 +50,12 @@
             "link" : "https://he.wikipedia.org/wiki/%D7%A7%D7%99%D7%92%D7%9C%D7%99%D7%94_%D7%9E%D7%A0%D7%95%D7%A6%D7%94"
         },
         {
-        "id": 7,
+            "id": 7,
             "name" : "פיקוס קדוש",
             "family": "תותיים",
             "origin" : "הודו ודרום מזרח אסיה",
             "text" : "עץ ירוק-עד גדול, המשיר את עליו בסוף האביב בגֹוני שלכת צהובים, ומלבלב מיד לאחר מכן. בעל קצב גידול מהיר, שורשים תוקפניים במיוחד ופירות עסיסיים ומלכלכים. הפיקוס הקדוש מקודש לרבים בארצות המזרח הרחוק ומכאן שמו. ",
-            "link" : "https://he.wikipedia.org/wiki/%D7%A4%D7%99%D7%A7%D7%95%D7%A1_%D7%A7%D7%93%D7%95%D7%A9" 
+            "link" : "https://he.wikipedia.org/wiki/%D7%A4%D7%99%D7%A7%D7%95%D7%A1_%D7%A7%D7%93%D7%95%D7%A9"
         },
         {
             "id": 8,
@@ -81,9 +82,50 @@
             "link" : "https://he.wikipedia.org/wiki/%D7%9B%D7%95%D7%A8%D7%99%D7%96%D7%99%D7%94_%D7%91%D7%A7%D7%91%D7%95%D7%A7%D7%99%D7%AA"
         }
     ]
-}
+};
 
-//לאחר טעינת העמוד
-document.addEventListener("DOMContentLoaded", function (event) {
+document.addEventListener("DOMContentLoaded", () => {
+    const treeCards = document.getElementById("treeCards");
+    const treeSearch = document.getElementById("treeSearch");
+    const treeModal = new bootstrap.Modal(document.getElementById('treeModal'));
 
+    function renderCards(trees) {
+        treeCards.innerHTML = ""; // Clear existing cards
+        trees.forEach(tree => {
+            const card = document.createElement("div");
+            card.className = "col-md-4 mb-4 card-container";
+            card.innerHTML = `
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">${tree.name}</h5>
+                                <p class="card-text">${tree.text.slice(0, 50)}...</p>
+                                <button class="btn btn-primary" data-id="${tree.id}">קרא עוד</button>
+                            </div>
+                        </div>
+                    `;
+            card.querySelector("button").addEventListener("click", () => showModal(tree));
+            treeCards.appendChild(card);
+
+            // הפעלת האנימציה
+            setTimeout(() => card.querySelector('.card').classList.add('show'), 100);
+        });
+    }
+
+    function showModal(tree) {
+        document.getElementById("modalTreeName").textContent = tree.name;
+        document.getElementById("modalTreeFamily").textContent = tree.family;
+        document.getElementById("modalTreeOrigin").textContent = tree.origin;
+        document.getElementById("modalTreeText").textContent = tree.text;
+        document.getElementById("modalTreeLink").href = tree.link;
+        treeModal.show();
+    }
+
+    treeSearch.addEventListener("input", (event) => {
+        const query = event.target.value.toLowerCase();
+        const filteredTrees = data.trees.filter(tree => tree.name.toLowerCase().includes(query));
+        renderCards(filteredTrees);
+    });
+
+    renderCards(data.trees); // Initial render
 });
+
