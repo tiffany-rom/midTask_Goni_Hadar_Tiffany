@@ -102,12 +102,12 @@ document.addEventListener("DOMContentLoaded", () => {
         treeCards.innerHTML = ""; // Clear existing cards
         trees.forEach(tree => {
             const card = document.createElement("div");
-            card.className = "col-md-4 mb-4 card-container";
+            card.className = "col-md-3 mb-3 card-container";
             card.innerHTML = `
                         <div class="card">
                             <div class="card-body">
+                            <img class="card-img" src=${tree.img}>
                                 <h5 class="card-title">${tree.name}</h5>
-                                <img class="card-img" src=${tree.img}>
                                 <p class="card-text">${tree.text.slice(0, 50)}...</p>
                                 <button class="btn btn-primary" data-id="${tree.id}">קרא עוד</button>
                             </div>
