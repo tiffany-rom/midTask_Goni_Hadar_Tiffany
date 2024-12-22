@@ -22,7 +22,6 @@ footer {
 
 /* תפריט ניווט */
 nav.navbar {
-  margin-bottom: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -36,9 +35,9 @@ nav.navbar {
 /* כרטיסיות */
 .card-container {
   display: flex;
-  flex-wrap: wrap; /* Allow wrapping for responsiveness */
+  flex-wrap: wrap; 
   justify-content: space-evenly;
-  gap: 20px; /* Adds spacing between cards */
+  gap: 20px; 
 }
 
 
@@ -50,8 +49,8 @@ nav.navbar {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 18rem; /* Fixed width */
-  height: 22rem; /* Fixed height */
+  width: 18rem; 
+  height: 22rem; 
 }
 
 .card:hover {
@@ -71,8 +70,8 @@ nav.navbar {
 
 .card img {
   width: 100%;
-  height: 12rem; /* Set height for uniformity */
-  object-fit: cover; /* Ensures the image scales properly */
+  height: 12rem; 
+  object-fit: cover; 
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
 }
@@ -98,6 +97,7 @@ nav.navbar {
 .modal-body {
   font-size: 1rem;
   line-height: 1.5;
+  align-items: stretch;
 }
 
 .modal-footer .btn-primary {
@@ -105,15 +105,35 @@ nav.navbar {
   border-color: #0056b3;
 }
 
+#modalImg {
+  width: 100%; 
+  height: auto; 
+  object-fit: cover; 
+  border-radius: 8px; 
+}
+
+
+.ps-md-3 {
+  padding-right: 16px; 
+}
+
 /* רספונסיביות */
 @media (max-width: 768px) {
   .card {
-    width: 100%; /* Full width for smaller screens */
-    height: auto; /* Adjust height for content */
+    width: 100%; 
+    height: auto; 
   }
 
   .card img {
-    height: auto; /* Adjust image height */
+    height: auto; 
+  }
+
+  .modal-body {
+    flex-direction: column; 
+  }
+
+  #modalImg {
+    margin-bottom: 15px; 
   }
 
   header {
@@ -122,5 +142,19 @@ nav.navbar {
 
   footer {
     padding: 8px 0;
+  }
+}
+
+/* Adjust Modal for Large Screens */
+@media (min-width: 992px) {
+  .modal-body {
+    align-items: stretch; 
+    height: 100%; 
+    direction: rtl; 
+  }
+
+  #modalImg {
+    max-height: 100%; 
+    height: auto; 
   }
 }
