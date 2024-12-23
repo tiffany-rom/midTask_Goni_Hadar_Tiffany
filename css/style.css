@@ -33,7 +33,7 @@ header h1{
 }
 
 footer {
-  background-color: #343a40;
+  background-color: #004b23;
   color: white;
   text-align: center;
   padding: 10px 0;
@@ -48,9 +48,35 @@ nav.navbar {
   color: white;
 }
 
+.navbar-brand {
+  color:#fbb02d;
+  font-weight: 900;
+}
+
+.navbar-brand:hover {
+  color:#f3de2c;
+}
+
+.custom-toggler-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px; 
+  height: 18px; 
+}
+
+.custom-toggler-icon span {
+  display: block;
+  height: 2px; 
+  width: 100%; 
+  background-color: #fbb02d; 
+  border-radius: 1px; 
+}
+
+
 /* אזור חיפוש */
 #treeSearch {
-  border: 2px solid #007bff;
+  /*border: 2px solid #007bff;*/
   border-radius: 5px;
   padding: 10px;
 }
@@ -83,13 +109,13 @@ nav.navbar {
 
 .card-title {
   font-size: 1.25rem;
-  color: #007bff;
+  color: #004b23;
   margin: 10px 0px;
   font-weight: 900;
 }
 
 .card-text {
-  color: #555;
+  color: #132a13;
 }
 
 .card img {
@@ -102,8 +128,8 @@ nav.navbar {
 
 /* כפתור בתוך כרטיסיות */
 .btn-primary {
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: #004b23;
+  border-color: #004b23;
   transition: background-color 0.2s, transform 0.2s;
 }
 
@@ -169,16 +195,3 @@ nav.navbar {
   }
 }
 
-/* Adjust Modal for Large Screens */
-@media (min-width: 992px) {
-  .modal-body {
-    align-items: stretch; 
-    height: 100%; 
-    direction: rtl; 
-  }
-
-  #modalImg {
-    max-height: 100%; 
-    height: auto; 
-  }
-}
